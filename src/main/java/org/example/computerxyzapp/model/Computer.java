@@ -1,14 +1,24 @@
 package org.example.computerxyzapp.model;
 
+import org.example.computerxyzapp.model.enums.Ram;
+
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "computers")
 public class Computer {
 
+    @Id
     private int id;
     private String brand;
     private double price;
     private double storage;
-    private double ram;
+
+    @Enumerated(EnumType.STRING)
+    private Ram ram;
+
+    @Column(name = "release_date")
     private LocalDate releaseDate;
 
     public int getId() {
@@ -43,11 +53,11 @@ public class Computer {
         this.storage = storage;
     }
 
-    public double getRam() {
+    public Ram getRam() {
         return ram;
     }
 
-    public void setRam(double ram) {
+    public void setRam(Ram ram) {
         this.ram = ram;
     }
 
